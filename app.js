@@ -23,7 +23,6 @@ app.use(function(req, res, next){
 
 app.use('/wiki/', routes);
 
-
 //SWIG
 // point res.render to the proper directory
 app.set('views', __dirname + '/views');

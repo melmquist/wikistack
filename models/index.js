@@ -27,7 +27,26 @@ getterMethods:{
 }
 });
 
+Page.hook('beforeValidate', function(page){
+  page.urlTitle=serialize(page.title);
+});
 
+
+function serialize(str){
+	if (str === undefined){
+		return Math.random().toString(36).substring(2, 7);
+	}
+	var reg = /\w/;
+	var answer = "";
+	for(var i = 0; i < str.length; i++){
+		if(str[i] === " "){
+			answer+= "_";
+		} else if (reg.test(str[i])){
+			answer+= str[i];
+		}
+	}
+	return answer;
+}
 /*
 
 var Foo = sequelize.define('foo', {
